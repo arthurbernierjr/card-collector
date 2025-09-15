@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a Card</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add a Card to Your Collection</h1>
+    <form action="/users/<%= user._id %>/cards" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" />
+
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="Grass">Grass</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Electric">Electric</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Darkness">Darkness</option>
+            <option value="Metal">Metal</option>
+            <option value="Fairy">Fairy</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Colorless">Colorless</option>
+        </select>
+
+        <label for="condition">Condition:</label>
+        <select id="condition" name="condition">
+            <option value="Mint">Mint</option>
+            <option value="Near Mint">Near Mint</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Light Played">Light Played</option>
+            <option value="Played">Played</option>
+            <option value="Poor">Poor</option>
+        </select>
+
+        <label for="cardNum">Set/Card Number:</label>
+        <input type="text" name="cardNum" id="cardNum" />
+
+        <button type="submit">Add Card</button>
+    </form>
+  </body>
+</html>

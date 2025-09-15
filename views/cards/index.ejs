@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Collection</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar') %>
+    <h1>My Pokemon Card Collection</h1>
+    <a href="/users/<%=user._id%>/cards/new">Add a card!</a>
+    <ul>
+      <% cards.forEach((card) => { %>
+      <li><%= card.name %>, (Type: <%= card.type %>)</li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

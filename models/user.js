@@ -4,16 +4,18 @@ const cardSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        },
+    },
     type: {
         type: String,
         enum: ['Grass', 'Fire', 'Water', 'Electric', 'Psychic', 'Fighting', 'Darkness', 'Metal', 'Fairy', 'Dragon', 'Colorless'],
         required: true,
     },
-    cardId: {
+    condition: {
         type: String,
-        required: true,
-        unique: true,
+        enum: ['Mint', 'Near Mint', 'Excellent', 'Good', 'Light Played', 'Played', 'Poor'],
+    },
+    cardNum: {
+        type: String,
     },
 });
 

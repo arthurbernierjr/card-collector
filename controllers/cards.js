@@ -58,7 +58,7 @@ router.get('/:cardId', async (req, res) => {
     }
 });
 
-// GET route to show form to edit a specific card's information:
+// GET route to show form to edit a specific card's details:
 router.get('/:cardId/edit', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
@@ -71,6 +71,24 @@ router.get('/:cardId/edit', async (req, res) => {
         res.redirect('/');
     }
 });
+
+// PUT route to update a specific card's details from the edit form:
+router.put('/:cardId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const card = currentUser.cards.id(req.params.cardId);
+        // using Mongoose .set() method to update card with new data on 'req.body'
+        card.set(req.body);
+        await currentUser.save();
+        res.redirect(
+            `/users/${currentUser._id}/cards/${card._id}`
+        );
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
 // DELETE route to delete a specific card from user's collection:
 router.delete('/:cardId', async (req, res) => {
     try {
@@ -83,11 +101,5 @@ router.delete('/:cardId', async (req, res) => {
         res.redirect('/');
     }
 });
-
-
-
-
-
-
 
 module.exports = router;

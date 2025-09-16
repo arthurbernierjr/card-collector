@@ -41,3 +41,19 @@ router.post('/', async (req, res) => {
         res.redirect('/');
     }
 });
+
+// GET route to show details for a specific card:
+router.get('/:cardId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        // find the specific card by the cardId supplied from req.params
+        const card = currentUser.cards.id(req.params.cardId);
+        // render show.ejs view passing card data in the context object
+        res.render('cards/show.ejs', {
+            card: card,
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});

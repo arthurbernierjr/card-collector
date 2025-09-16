@@ -11,7 +11,11 @@
     <a href="/users/<%=user._id%>/cards/new">Add a card!</a>
     <ul>
       <% cards.forEach((card) => { %>
-      <li><%= card.name %>, (Type: <%= card.type %>)</li>
+      <li>
+        <a href="/users/<%=user._id %>/cards/<%= card._id %>">
+        <%= card.name %>, (Type: <%= card.type %>)
+        </a>
+      </li>
       <% }) %>
     </ul>
   </body>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= card.title %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= card.name %>, Type: <%= card.type %></h1>
+    <p>Condition: <%= card.condition %></p>
+    <% if (card.cardNum) { %>
+    <p>Set/Card Number: <%= card.cardNum %></p>
+    <% } %>
+  </body>
+</html>
+  

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../models/user.js');
 
-module.exports = router;
+
 
 // GET route to show all of a user's cards:
 router.get('/', async (req, res) => {
@@ -57,3 +57,29 @@ router.get('/:cardId', async (req, res) => {
         res.redirect('/');
     }
 });
+
+// DELETE route to delete a specific card from user's collection:
+router.delete('/:cardId', async (req, res) => {
+    try {
+      // Look up the user from req.session
+      const currentUser = await User.findById(req.session.user._id);
+      // Use the Mongoose .deleteOne() method to delete
+      // an application using the id supplied from req.params
+      currentUser.cards.id(req.params.cardId).deleteOne();
+      // Save changes to the user
+      await currentUser.save();
+      // Redirect back to the applications index view
+      res.redirect(`/users/${currentUser._id}/cards`);
+    } catch (error) {
+      // If any errors, log them and redirect back home
+      console.log(error);
+      res.redirect('/');
+    }
+  });
+
+
+
+
+
+
+module.exports = router;

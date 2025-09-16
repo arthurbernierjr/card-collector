@@ -12,6 +12,12 @@
     <% if (card.cardNum) { %>
     <p>Set/Card Number: <%= card.cardNum %></p>
     <% } %>
+    <form
+        action="/users/<%= user._id %>/cards/<%= card._id %>?_method=DELETE"
+        method="POST"
+      >
+        <button type="submit">Delete this card.</button>
+    </form>
   </body>
 </html>
   

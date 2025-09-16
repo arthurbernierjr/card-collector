@@ -61,21 +61,16 @@ router.get('/:cardId', async (req, res) => {
 // DELETE route to delete a specific card from user's collection:
 router.delete('/:cardId', async (req, res) => {
     try {
-      // Look up the user from req.session
-      const currentUser = await User.findById(req.session.user._id);
-      // Use the Mongoose .deleteOne() method to delete
-      // an application using the id supplied from req.params
-      currentUser.cards.id(req.params.cardId).deleteOne();
-      // Save changes to the user
-      await currentUser.save();
-      // Redirect back to the applications index view
-      res.redirect(`/users/${currentUser._id}/cards`);
+        const currentUser = await User.findById.apply(req.session.user._id);
+        currentUser.cards.id(req.params.cardId).deleteOne();
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/cards`);
     } catch (error) {
-      // If any errors, log them and redirect back home
-      console.log(error);
-      res.redirect('/');
+        console.log(error);
+        res.redirect('/');
     }
-  });
+});
+
 
 
 

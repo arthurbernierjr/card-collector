@@ -3,20 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>My Collection</title>
   </head>
   <body>
     <%- include('../partials/_navbar') %>
-    <h1>My Pokemon Card Collection</h1>
-    <a href="/users/<%=user._id%>/cards/new">Add a card!</a>
-    <ul>
-      <% cards.forEach((card) => { %>
-      <li>
+    <div class="cards-index-body">
+      <div class="cards-index-header">
+        <h1>My Pokémon Card Collection</h1>
+        <a class="add-card-link" href="/users/<%=user._id%>/cards/new">Add a card!</a>
+      </div>
+      <ul>
+        <% cards.forEach((card) => { %>
         <a href="/users/<%=user._id %>/cards/<%= card._id %>">
-        <%= card.name %>, (Type: <%= card.type %>)
+          <li><%= card.name %> (<%= card.type %>)</li>
         </a>
-      </li>
-      <% }) %>
-    </ul>
+        <% }) %>
+      </ul>
+    </div>
   </body>
 </html>

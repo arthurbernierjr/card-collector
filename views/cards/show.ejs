@@ -3,26 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= card.title %></title>
+    <link rel="stylesheet" href="/stylesheets/show.css" />
+    <title><%= card.name %></title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= card.name %>, Type: <%= card.type %></h1>
-    <p>Condition: <%= card.condition %></p>
-    <% if (card.cardNum) { %>
-    <p>Set/Card Number: <%= card.cardNum %></p>
-    <% } %>
-
-    <a href="/users/<%= user._id %>/cards/<%= card._id %>/edit">
-        Edit card info.
-    </a>
-
-    <form
-        action="/users/<%= user._id %>/cards/<%= card._id %>?_method=DELETE"
-        method="POST"
-      >
-        <button type="submit">Delete card.</button>
-    </form>
-  </body>
-</html>
-  
+    <div class="show-body">
+      <div class="show-header">
+        <h1><%= card.name %></h1>
+        <div class="show-sidebar">
+          <div class="show-actions">
+            <a href="/users/<%= user._id %>/cards/<%= card._id %>/edit">Edit</a>
+            <form
+              action="/users/<%= user._id %>/cards/<%= card._id %>?_method=DELETE"
+              method="POST">
+                <button type="submit">Delete</button>
+            </form>
+            <a href="/users/<%= user._id %>/cards">Return to Collection</a>
+          </div>
+        </div>
+        <div class="show-details">
+          <h2>Card Details</h2>
+          <p>Type: <%= card.type %></p>
+          <% if (card.cardNum) { %>
+          <p>Set/Collector Number: <%= card.cardNum %></p>
+          <% } %>
+          <p>Condition: <%= card.condition %></p>
+        </div>
+      </div>
+    </div>

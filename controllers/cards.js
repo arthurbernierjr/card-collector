@@ -58,10 +58,23 @@ router.get('/:cardId', async (req, res) => {
     }
 });
 
+// GET route to show form to edit a specific card's information:
+router.get('/:cardId/edit', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const card = currentUser.cards.id(req.params.cardId);
+        res.render('cards/edit.ejs', {
+            card: card,
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 // DELETE route to delete a specific card from user's collection:
 router.delete('/:cardId', async (req, res) => {
     try {
-        const currentUser = await User.findById.apply(req.session.user._id);
+        const currentUser = await User.findById(req.session.user._id);
         currentUser.cards.id(req.params.cardId).deleteOne();
         await currentUser.save();
         res.redirect(`/users/${currentUser._id}/cards`);

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editing <%= card.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit your <%= card.name %> card:</h1>
+    <form action="/users/<%= user._id %>/cards" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= card.name %>" />
+
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="Grass"
+            <%= card.type === "Grass" ? 'selected' : '' %>
+            >
+            Grass
+        </option>
+            <option value="Fire"
+            <%= card.type === "Fire" ? 'selected' : '' %>
+            >
+            Fire
+        </option>
+            <option value="Water"
+            <%= card.type === "Water" ? 'selected' : '' %>
+            >
+            Water
+        </option>
+            <option value="Electric"
+            <%= card.type === "Electric" ? 'selected' : '' %>
+            >
+            Electric
+        </option>
+            <option value="Psychic"
+            <%= card.type === "Psychic" ? 'selected' : '' %>
+            >
+            Psychic
+        </option>
+            <option value="Fighting"
+            <%= card.type === "Fighting" ? 'selected' : '' %>
+            >
+            Fighting
+        </option>
+            <option value="Darkness"
+            <%= card.type === "Darkness" ? 'selected' : '' %>
+            >
+            Darkness
+        </option>
+            <option value="Metal"
+            <%= card.type === "Metal" ? 'selected' : '' %>
+            >
+            Metal
+        </option>
+            <option value="Fairy"
+            <%= card.type === "Fairy" ? 'selected' : '' %>
+            >
+            Fairy
+        </option>
+            <option value="Dragon"
+            <%= card.type === "Dragon" ? 'selected' : '' %>
+            >
+            Dragon
+        </option>
+            <option value="Colorless"
+            <%= card.type === "Colorless" ? 'selected' : '' %>
+            >
+            Colorless
+        </option>
+        </select>
+
+        <label for="condition">Condition:</label>
+        <select id="condition" name="condition">
+            <option value="Mint"
+            <%= card.condition === "Mint" ? 'selected' : '' %>
+            >
+            Mint
+        </option>
+            <option value="Near Mint"
+            <%= card.condition === "Near Mint" ? 'selected' : '' %>
+            >
+            Near Mint
+        </option>
+            <option value="Excellent"
+            <%= card.condition === "Excellent" ? 'selected' : '' %>
+            >
+            Excellent
+            </option>
+            <option value="Good"
+            <%= card.condition === "Good" ? 'selected' : '' %>
+            >
+            Good
+        </option>
+            <option value="Light Played"
+            <%= card.condition === "Light Played" ? 'selected' : '' %>
+            >
+            Light Played
+        </option>
+            <option value="Played"
+            <%= card.condition === "Played" ? 'selected' : '' %>
+            >
+            Played
+        </option>
+            <option value="Poor"
+            <%= card.condition === "Poor" ? 'selected' : '' %>
+            >
+            Poor
+        </option>
+        </select>
+
+        <label for="cardNum">Set/Card Number:</label>
+        <input type="text" name="cardNum" id="cardNum" value="<%= card.cardNum %>" />
+
+        <button type="submit">Update Card</button>
+    </form>
+  </body>
+</html>

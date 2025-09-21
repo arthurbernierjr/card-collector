@@ -30,7 +30,7 @@ body {
 }
 
 .show-header > h1 {
-  color: #1c2e5b;
+  color: #ffffff;
   font-size: 3.4em;
   margin-left: 10px;
 }
@@ -38,7 +38,7 @@ body {
 .show-actions {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 80%;
   justify-content: space-between;
   align-items: center;
   margin: 20px 0 0 30px;
